@@ -43,6 +43,22 @@ function App() {
   })
 }
 
+// Handlers for adding todos
+function handleFormSubmit(event) {
+  event.preventDefault()
+  const title = event.target.title.value;
+  // Create a new todo object
+  const newTodo = {
+    name: title,
+    completed: false
+  };
+  // Update the todos state
+  setTodos([...todos, newTodo]);
+
+  // Reset the input field
+  event.target.reset();
+}
+
 
 
 export default App
