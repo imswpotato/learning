@@ -33,6 +33,9 @@ function App() {
             checked={todo.completed} 
             data-id={i} 
             id={"todo-" + i}
+            onChange={() => toggleTodo(i)}
+            // 
+            readOnly
           />
           <label 
           htmlFor={"todo-" + i}
@@ -51,13 +54,20 @@ function handleFormSubmit(event) {
   // Create a new todo object
   const newTodo = {
     name: title,
-    completed: true
+    completed: false
   };
   // Update the todos state
   setTodos([...todos, newTodo]);
 
   // Reset the input field
   event.target.reset();
+}
+
+// Check and uncheck todos
+function toggleTodo(index) {
+  const updatedTodos = [...todos];
+  updatedTodos[index].completed = !updatedTodos[index].completed;
+  setTodos(updatedTodos);
 }
 
 return (
