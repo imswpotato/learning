@@ -59,6 +59,26 @@ function handleFormSubmit(event) {
   event.target.reset();
 }
 
-
+return (
+  <>
+  <Header title="Hello!" message="Welcome to your Todo App"/>
+  
+  <main>
+    <section>
+      <form id="todo-form" onSubmit={handleFormSubmit}>
+        <input 
+          type="text" 
+          name="title" 
+          placeholder="Enter your task here"
+          autoComplete='off' 
+          required 
+        />
+        <button className="todo-form__button" type="submit">Add Task</button>
+    </form>
+    </section>
+  </main>
+  
+  </>
+)
 
 export default App
