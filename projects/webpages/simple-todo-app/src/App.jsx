@@ -4,10 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 // Import components
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
-import { TodoList } from "./components/TodoList";
-import { Card } from "./components/Card";
+import { Header } from "./components/Header.jsx";
+import { Footer } from "./components/Footer.jsx";
+import { TodoList } from "./components/TodoList.jsx";
+import { Card } from "./components/Card.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
