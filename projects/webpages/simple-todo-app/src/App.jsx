@@ -97,8 +97,7 @@ return (
   </main>
   
   <Footer>
-    <p className="footer__text">Copyright © 2025 My Website. All rights reserved.</p>
-  
+    <p className="footer__text">Contact me at contact@mywebsite.com</p>
   </Footer>
   </>
 )
