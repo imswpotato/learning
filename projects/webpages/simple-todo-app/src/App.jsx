@@ -17,9 +17,10 @@ return (
   
   <TodoList 
         todos={[
-          { id: 1, text: "Complete React assignment", completed: false },
-          { id: 2, text: "Study for math test", completed: false },
-          { id: 3, text: "Do laundry", completed: true }
+          { id: 1, text: " Complete React assignment", completed: false },
+          { id: 2, text: " Study for Javascript Framework", completed: false },
+          { id: 3, text: " Do laundry", completed: true },
+          { id: 4, text: " Finish the portfolio", completed: false}
         ]}
       />
 
