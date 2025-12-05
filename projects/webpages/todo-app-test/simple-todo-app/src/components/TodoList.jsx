@@ -1,7 +1,8 @@
 import '../styles/TodoList.css';
 
 // Add a TodoList component that displays a list of todo items
-function TodoList(props) {
+export function TodoList(props) {
+    // Loop through the todos and create list items
     const items = [];
     for (let i = 0; i < props.todos.length; i++) {
         items.push(
@@ -12,6 +13,8 @@ function TodoList(props) {
             <span>{props.todos[i].text}</span>
             </li>
         )
+        
+    // Return the list of items and a button to remove completed items
     return (<>
     <ul>
         {items}

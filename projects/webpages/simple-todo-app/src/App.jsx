@@ -4,10 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 // Import components
-import { Header } from "./assets/components/Header.jsx";
-import { Footer } from "./assets/components/Footer.jsx";
-import { TodoList } from "./assets/components/TodoList.jsx";
-import { Card } from "./assets/components/Card.jsx";
+import { Header } from "./components/header.jsx"; // I can't use Header.jsx because of case sensitivity on my systems??? It kept saying the file was already imported.
+import { Footer } from "./components/Footer.jsx";
+import { TodoList } from "./components/TodoList.jsx";
+import { Card } from "./components/Card.jsx";
 
 // Static App function
 function App() {
