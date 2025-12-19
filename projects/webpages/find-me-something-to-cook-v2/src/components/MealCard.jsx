@@ -3,7 +3,6 @@ function MealCard({ recipe, onSave }) {
         <div className="recipe-card">
             <h3>{recipe.strMeal}</h3>
             <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-            <button onClick={() => onSave(recipe)}>Save to Notebook</button>
             <a 
             href={`https://www.themealdb.com/meal.php?c=${recipe.idMeal}`}
             target="_blank"
