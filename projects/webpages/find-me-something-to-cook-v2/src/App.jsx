@@ -57,16 +57,20 @@ function App() {
     <div>
       <h1>Find Me Something to Cook</h1>
 
-      <input
-        type="text"
-        placeholder="Enter an ingredient (e.g., chicken)"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
+      <section className="search-section">
+        <input
+          type="text"
+          placeholder="Enter an ingredient (e.g., chicken)"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
 
-      <button onClick={handleSearch}>Search</button>
-      <button onClick={() => setRecipes([])}>Clear</button>
-      <button onClick={() => getRandomRecipes(3).then(setRecipes)}>Refresh</button>
+        <div className="search-buttons">
+          <button className="search-btn" onClick={handleSearch}>Search</button>
+          <button onClick={() => setRecipes([])}>Clear</button>
+          <button onClick={() => getRandomRecipes(3).then(setRecipes)}>Refresh</button>
+        </div>
+      </section>
 
       {loading ? (
         <div className="spinner-container">
