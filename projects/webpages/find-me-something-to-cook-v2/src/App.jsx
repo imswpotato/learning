@@ -65,7 +65,7 @@ function App() {
       setTimeout(() => {
         setRecipes(result.slice(0, 3));
         setLoading(false);
-      }, 2000);
+      }, 1000);
 
     } catch (error) {
       console.error("Error fetching recipes:", error);
