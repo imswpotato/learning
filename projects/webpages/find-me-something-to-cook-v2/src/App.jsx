@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import SearchBar from './components/SearchBar'
-import MealResult from './components/MealResult'
+import MealResult from './components/MealList'
 import MealCard from './components/MealCard'
 import Notebook from './components/Notebook'
 
