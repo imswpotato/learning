@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-/* Body styling */
 body {
   font-family: 'Courier New', Courier, monospace;
   background-image: url('./assets/paper-texture.jpg');
@@ -48,8 +47,8 @@ header p {
   width: 100%;
   max-width: 500px;
   gap: 10px;
-  margin-bottom: 20px;
   margin: auto;
+  margin-bottom: 20px;
   padding: 10px;
 }
 
@@ -80,20 +79,21 @@ header p {
   transition: background 0.3s ease;
 }
 
-.search-buttons .search-btn {
-  background-color: #805436;
-}
-
-.search-btn:hover {
-  background-color: #b8794f;
-}
-
 .search-buttons button:hover {
   background: #888888;
 }
 
-/* Meal list (from #result) */
-.meal-list {
+.search-buttons .search-btn {
+  background-color: #805436;
+}
+
+.search-buttons .search-btn:hover {
+  background-color: #b8794f;
+}
+
+/* Meal list and Notebook - shared grid layout */
+.meal-list,
+.notebook {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
@@ -103,9 +103,9 @@ header p {
   padding: 0 20px;
 }
 
-.meal-list button {
-  font-family: 'Courier New', Courier, monospace;
-  width: 170px;
+/* Use auto-fill for notebook to prevent cards from expanding when deleted */
+.notebook {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 /* Recipe card */
@@ -152,9 +152,9 @@ header p {
 }
 
 .recipe-card button {
+  font-family: 'Courier New', Courier, monospace;
   width: 170px;
   margin: auto;
-  justify-content: center;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
@@ -173,33 +173,7 @@ header p {
   background-color: #805436;
 }
 
-/* Notebook section */
-.notebook {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 20px;
-}
-
-.notebook .recipe-card button {
-  font-family: 'Courier New', Courier, monospace;
-  width: 170px;
-}
-
-/* Spinner */
-.spinner {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #805436;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 20px auto;
-}
-
+/* Loading spinner */
 .spinner-container {
   display: flex;
   flex-direction: column;
@@ -219,67 +193,38 @@ header p {
   margin-bottom: 10px;
 }
 
-/* Loading text */
 .spinner-container h3 {
   font-size: 1.2rem;
   color: #000000;
   margin: 0;
 }
 
-/* Spin animation */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Modal overlay */
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 999;
+  cursor: pointer;
 }
 
-/* Modal box */
-.modal-box {
-  background: #fffbe6;
-  border: 2px solid #000;
+.modal-content {
+  background: white;
   padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
   width: 90%;
-  max-width: 600px;
-  max-height: 80vh;
-  overflow-y: auto;
-  border-radius: 6px;
-  box-shadow: 4px 4px 0px #000;
-  font-family: 'Courier New', monospace;
+  position: relative;
+  cursor: default;
   animation: popIn 0.25s ease-out;
 }
 
-/* Close button */
 .modal-close {
   background: #805436;
   color: white;
@@ -304,6 +249,29 @@ header p {
   white-space: pre-line;
 }
 
+/* Animations */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes popIn {
   from {
     transform: scale(0.8);
@@ -316,12 +284,10 @@ header p {
   }
 }
 
-/* Responsive screens */
-/* For tablets and smaller screens */
+/* Responsive design */
 @media (max-width: 1024px) {
   .search-section {
     width: 90%;
-    max-width: 500px;
   }
 
   .meal-list,
@@ -330,10 +296,20 @@ header p {
     gap: 25px;
     padding: 0 15px;
   }
+
+  .notebook {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 }
 
-/* For mobile screens */
 @media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .search-section input {
+    font-size: 0.95rem;
+  }
 
   .meal-list,
   .notebook {
@@ -341,12 +317,8 @@ header p {
     gap: 20px;
   }
 
-  .search-section input {
-    font-size: 0.95rem;
-  }
-
-  header h1 {
-    font-size: 2rem;
+  .notebook {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
 }
 
@@ -404,9 +376,7 @@ header p {
     margin-bottom: 10px;
   }
 
-  .recipe-card button,
-  .meal-list button,
-  .notebook .recipe-card button {
+  .recipe-card button {
     width: 100%;
     padding: 10px 12px;
   }

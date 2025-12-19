@@ -7,11 +7,11 @@ function MealList({ recipes, onSave, onView }) {
     return (
         <div className="meal-list">
             {recipes.map((recipe) => (
-                <MealCard 
-                key={recipe.idMeal} 
-                recipe={recipe} 
-                onSave={onSave}
-                onView={onView} />
+                <MealCard
+                    key={recipe.idMeal}
+                    recipe={recipe}
+                    onSave={onSave}
+                    onView={onView} />
             ))}
         </div>
     );
