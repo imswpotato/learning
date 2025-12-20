@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
 import { getRandomRecipes, getRecipesByIngredient } from './api';
 import MealList from './components/MealList';
@@ -26,7 +28,7 @@ function App() {
     const exists = notebook.find((r) => r.idMeal === recipe.idMeal);
 
     if (exists) {
-      alert(`${recipe.strMeal} is already in your notebook.`);
+      toast.error(`${recipe.strMeal} is already in your notebook.`);
       return;
     }
 
@@ -34,7 +36,7 @@ function App() {
     setNotebook(updated);
     localStorage.setItem('notebook', JSON.stringify(updated));
 
-    alert(`${recipe.strMeal} has been saved to your Notebook!`);
+    toast.success(`${recipe.strMeal} has been saved to your Notebook!`);
   }
 
   // Delete recipe from Notebook
@@ -47,7 +49,7 @@ function App() {
   // Search by ingredient
   async function handleSearch() {
     if (!query.trim()) {
-      alert("Please enter an ingredient to search.");
+      toast.warn("Please enter an ingredient to search.");
       return;
     }
 
@@ -57,7 +59,7 @@ function App() {
 
       if (!Array.isArray(result) || result.length === 0) {
         setRecipes([]);
-        alert("Oops! Not sure how to cook that...");
+        toast.error("Oops! Not sure how to cook that...");
         setLoading(false);
         return;
       }
@@ -69,7 +71,7 @@ function App() {
 
     } catch (error) {
       console.error("Error fetching recipes:", error);
-      alert("Oops! The kitchen is burning. Try again later.");
+      toast.error("Oops! The kitchen is burning. Try again later.");
       setLoading(false);
     }
   }
@@ -142,6 +144,19 @@ function App() {
           A study project using TheMealDB API.
         </p>
       </footer>
+
+      {/* Toastify Container npm */}
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        theme="light"
+        toastClassName="toast-note"
+      />
+
     </div>
   );
 }
